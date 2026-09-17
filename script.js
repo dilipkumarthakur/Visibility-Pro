@@ -1,1 +1,1 @@
-console.log("Visibility Pro website loaded.");
+console.log("Visibility Pro — Home loaded.");
