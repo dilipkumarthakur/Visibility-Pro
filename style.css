@@ -1,185 +1,436 @@
-/* ================================
-   VISIBILITY PRO — NAVIGATION
-================================ */
+/* =========================================
+   VISIBILITY PRO
+   HEADER ONLY
+========================================= */
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+
+    overflow-x: hidden;
+}
+
+html {
+    background: #080808;
+}
+
+body {
+    background: #080808;
+    color: #F2F2F2;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
 
 .site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(201, 151, 62, 0.025),
+            transparent 55%
+        ),
+        #080808;
+
+    border-top: 1px solid rgba(201, 151, 62, 0.30);
+    border-bottom: 1px solid rgba(201, 151, 62, 0.30);
+
+    position: relative;
+
     z-index: 1000;
-
-    background: rgba(8, 8, 8, 0.94);
-    border-bottom: 1px solid #292929;
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
 }
 
-.nav-container {
-    max-width: 1500px;
-    margin: auto;
-    padding: 18px 5%;
+
+/* =========================================
+   HEADER INNER
+========================================= */
+
+.header-inner {
+    width: 100%;
+    max-width: 1920px;
+
+    min-height: 180px;
+
+    margin: 0 auto;
+
+    padding: 0 4.5%;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
-    gap: 35px;
+
+    gap: 25px;
+
+    overflow: hidden;
 }
 
-/* LOGO */
 
-.brand-logo {
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
     display: flex;
+
     flex-direction: column;
+
     text-decoration: none;
+
     flex-shrink: 0;
 }
 
 .brand-name {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 25px;
-    line-height: 1;
-    color: #f2f2f2;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(42px, 3vw, 61px);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -2px;
+
+    color: #F2F2F2;
+
+    white-space: nowrap;
 }
 
 .brand-name span {
-    color: #c9973e;
+    color: #C9973E;
 }
 
-.brand-logo small {
-    margin-top: 5px;
-    color: #858585;
-    font-size: 7px;
-    letter-spacing: 2px;
+.brand-tagline {
+    margin-top: 17px;
+
+    color: #D0D0D0;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    font-weight: 400;
+
+    white-space: nowrap;
 }
 
-/* NAV */
+
+/* =========================================
+   DESKTOP NAVIGATION
+========================================= */
 
 .main-nav {
     display: flex;
+
     align-items: center;
     justify-content: center;
-    gap: 30px;
+
+    gap: clamp(25px, 3vw, 55px);
+
+    margin-left: auto;
+
+    flex-shrink: 1;
+
+    min-width: 0;
 }
 
 .main-nav a {
     position: relative;
 
-    color: #c8c8c8;
+    color: #E6E6E6;
+
     text-decoration: none;
 
-    font-size: 12px;
-    letter-spacing: 0.4px;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(18px, 1.5vw, 27px);
+
+    font-weight: 400;
+
+    white-space: nowrap;
+
+    padding: 15px 0;
 
     transition: color 0.3s ease;
 }
 
-.main-nav a:hover,
-.main-nav a.active {
-    color: #f2f2f2;
+.main-nav a:hover {
+    color: #E7B85C;
 }
 
-.main-nav a::after {
+
+/* =========================================
+   ACTIVE NAVIGATION
+========================================= */
+
+.main-nav a.active {
+    color: #E7B85C;
+}
+
+.main-nav a.active::after {
     content: "";
 
     position: absolute;
-    left: 0;
-    bottom: -7px;
 
-    width: 0;
-    height: 1px;
+    left: -8px;
+    right: -8px;
 
-    background: #c9973e;
+    bottom: -2px;
 
-    transition: width 0.3s ease;
+    height: 3px;
+
+    background: #E7B85C;
 }
 
-.main-nav a:hover::after,
-.main-nav a.active::after {
-    width: 100%;
-}
 
-/* GET IN TOUCH */
+/* =========================================
+   GET IN TOUCH BUTTON
+========================================= */
 
-.nav-cta {
-    padding: 11px 20px;
+.contact-btn {
+    width: clamp(240px, 23vw, 315px);
 
-    border: 1px solid #c9973e;
+    min-width: 0;
 
-    color: #f2f2f2;
+    height: 96px;
+
+    padding: 0 30px;
+
+    flex-shrink: 0;
+
+    border: 2px solid #E7B85C;
+
+    color: #E7B85C;
+
     text-decoration: none;
 
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(21px, 1.5vw, 29px);
+
+    font-weight: 400;
 
     white-space: nowrap;
 
-    transition: all 0.3s ease;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
 }
 
-.nav-cta:hover {
-    background: #c9973e;
+.contact-btn:hover {
+    background: #E7B85C;
+
     color: #080808;
 }
 
-/* MOBILE MENU BUTTON */
+
+/* =========================================
+   ARROW
+========================================= */
+
+.arrow {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 38px;
+
+    line-height: 1;
+
+    font-weight: 300;
+
+    transition:
+        transform 0.3s ease;
+}
+
+.contact-btn:hover .arrow {
+    transform: translateX(6px);
+}
+
+
+/* =========================================
+   MOBILE MENU BUTTON
+========================================= */
 
 .menu-toggle {
     display: none;
 
-    width: 42px;
-    height: 42px;
+    width: 48px;
+    height: 48px;
+
+    padding: 0;
 
     background: transparent;
-    border: 1px solid #292929;
+
+    border: 1px solid #C9973E;
 
     cursor: pointer;
 
+    flex-direction: column;
+
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    gap: 6px;
+
+    gap: 7px;
+
+    flex-shrink: 0;
 }
 
 .menu-toggle span {
-    width: 18px;
+    display: block;
+
+    width: 21px;
     height: 1px;
-    background: #f2f2f2;
+
+    background: #E7B85C;
 }
 
-/* MOBILE NAV */
+
+/* =========================================
+   MOBILE NAVIGATION
+========================================= */
 
 .mobile-nav {
     display: none;
+
+    width: 100%;
+
     flex-direction: column;
 
     background: #101010;
+
     border-top: 1px solid #292929;
 }
 
 .mobile-nav a {
-    padding: 17px 6%;
+    width: 100%;
 
-    color: #f2f2f2;
+    padding: 18px 6%;
+
+    color: #F2F2F2;
+
     text-decoration: none;
 
-    font-size: 13px;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
 
     border-bottom: 1px solid #292929;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.mobile-nav a:hover {
+    background: #181818;
+
+    color: #E7B85C;
 }
 
 .mobile-nav.show {
     display: flex;
 }
 
-/* RESPONSIVE */
+
+/* =========================================
+   LARGE TABLET
+========================================= */
+
+@media (max-width: 1250px) {
+
+    .header-inner {
+        padding: 0 4%;
+        gap: 20px;
+    }
+
+    .brand-name {
+        font-size: 42px;
+    }
+
+    .brand-tagline {
+        margin-top: 10px;
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+    .main-nav {
+        gap: 22px;
+    }
+
+    .main-nav a {
+        font-size: 18px;
+    }
+
+    .contact-btn {
+        width: 220px;
+        height: 70px;
+
+        padding: 0 22px;
+
+        font-size: 21px;
+    }
+
+    .arrow {
+        font-size: 30px;
+    }
+}
+
+
+/* =========================================
+   TABLET / MOBILE
+========================================= */
 
 @media (max-width: 950px) {
 
+    .header-inner {
+        min-height: 95px;
+
+        padding: 0 5%;
+    }
+
     .main-nav,
-    .nav-cta {
+    .contact-btn {
         display: none;
     }
 
@@ -187,7 +438,46 @@
         display: flex;
     }
 
-    .nav-container {
-        padding: 16px 5%;
+    .brand-name {
+        font-size: 34px;
+
+        letter-spacing: -1px;
+    }
+
+    .brand-tagline {
+        margin-top: 9px;
+
+        font-size: 7px;
+
+        letter-spacing: 2.5px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+    .header-inner {
+        min-height: 82px;
+
+        padding: 0 5%;
+    }
+
+    .brand-name {
+        font-size: 28px;
+    }
+
+    .brand-tagline {
+        font-size: 6px;
+
+        letter-spacing: 1.8px;
+    }
+
+    .menu-toggle {
+        width: 42px;
+        height: 42px;
     }
 }
