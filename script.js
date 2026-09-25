@@ -198,3 +198,58 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 
 });
+
+
+
+
+
+
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileNav = document.querySelector(".mobile-nav");
+
+if (menuToggle && mobileNav) {
+
+    menuToggle.addEventListener("click", function () {
+
+        const isOpen =
+            mobileNav.classList.toggle("show");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
+        );
+
+        menuToggle.setAttribute(
+            "aria-label",
+            isOpen ? "Close menu" : "Open menu"
+        );
+
+    });
+
+
+    mobileNav.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", function () {
+
+            mobileNav.classList.remove("show");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+        });
+
+    });
+
+}
