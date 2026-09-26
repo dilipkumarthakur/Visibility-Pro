@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Social Media | Visibility Pro</title>
+
+    <link rel="stylesheet" href="../../style.css">
+
+    <style>
+
+        /* =========================================
+           SOCIAL MEDIA — PREMIUM ACCENTS
+        ========================================== */
+
+        .social-detail-hero {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 78% 35%,
+                    rgba(201, 151, 62, 0.11),
+                    transparent 30%
+                ),
+                #0B0B0B;
+        }
+
+        .social-detail-hero::after {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: -180px;
+            bottom: -220px;
+            border: 1px solid rgba(201, 151, 62, 0.22);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .social-detail-hero h1 {
+            max-width: 900px;
+        }
+
+        .social-detail-hero h1 span {
+            color: #C9973E;
+        }
+
+
+        /* =========================================
+           SOCIAL STATEMENT
+        ========================================== */
+
+        .social-detail-statement {
+            position: relative;
+            background: #0B0B0B;
+            padding: 85px 5%;
+            border-top: 1px solid #202020;
+        }
+
+        .social-detail-statement-inner {
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .social-detail-statement-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .social-detail-statement h2 {
+            margin: 0;
+            color: #F2F2F2;
+            font-size: clamp(42px, 5vw, 76px);
+            line-height: .98;
+            letter-spacing: -2px;
+            font-weight: 500;
+        }
+
+        .social-detail-statement h2 span {
+            color: #C9973E;
+        }
+
+        .social-detail-statement-text {
+            position: relative;
+            padding-left: 30px;
+            border-left: 1px solid #C9973E;
+        }
+
+        .social-detail-statement-text p {
+            max-width: 620px;
+            margin: 0 0 18px;
+            color: #A8A8A8;
+            font-size: 14px;
+            line-height: 1.85;
+        }
+
+
+        /* =========================================
+           OFFERING ACCENT
+        ========================================== */
+
+        .social-detail-offering {
+            position: relative;
+        }
+
+        .social-detail-offering::after {
+            content: "↗";
+            position: absolute;
+            right: 0;
+            top: 28px;
+            color: #C9973E;
+            font-size: 18px;
+            opacity: .75;
+        }
+
+
+        /* =========================================
+           PLATFORM STRIP
+        ========================================== */
+
+        .social-detail-platforms {
+            background: #101010;
+            padding: 70px 5%;
+            border-top: 1px solid #202020;
+            border-bottom: 1px solid #202020;
+        }
+
+        .social-detail-platforms-inner {
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        .social-platform-label {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 35px;
+            color: #C9973E;
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        .social-platform-label i {
+            display: block;
+            width: 45px;
+            height: 1px;
+            background: #C9973E;
+        }
+
+        .social-platform-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #292929;
+            border-left: 1px solid #292929;
+        }
+
+        .social-platform-list div {
+            min-height: 110px;
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            border-right: 1px solid #292929;
+            border-bottom: 1px solid #292929;
+        }
+
+        .social-platform-list strong {
+            color: #F2F2F2;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .social-platform-list span {
+            display: block;
+            margin-top: 7px;
+            color: #858585;
+            font-size: 10px;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================
+           WHY SECTION
+        ========================================== */
+
+        .social-detail-why {
+            background:
+                radial-gradient(
+                    circle at 70% 50%,
+                    rgba(201,151,62,.055),
+                    transparent 35%
+                ),
+                #0B0B0B;
+        }
+
+        .social-detail-why-content {
+            max-width: 1100px;
+        }
+
+        .social-detail-why-content h2 span {
+            color: #E7B85C;
+        }
+
+
+        /* =========================================
+           CTA
+        ========================================== */
+
+        .social-detail-cta {
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    rgba(201,151,62,.10),
+                    transparent 42%
+                ),
+                #0B0B0B;
+        }
+
+        .social-detail-cta::before {
+            content: "";
+            position: absolute;
+            width: 620px;
+            height: 620px;
+            border: 1px solid rgba(201,151,62,.13);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .social-detail-cta-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           LAPTOP
+        ========================================== */
+
+        @media (min-width: 601px) and (max-width: 1200px) {
+
+            .social-detail-statement {
+                padding: 70px 5%;
+            }
+
+            .social-detail-statement-grid {
+                gap: 55px;
+            }
+
+            .social-platform-list div {
+                min-height: 95px;
+                padding: 20px;
+            }
+
+            .social-platform-list strong {
+                font-size: 15px;
+            }
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 600px) {
+
+            .social-detail-hero::after {
+                width: 280px;
+                height: 280px;
+                right: -150px;
+                bottom: -150px;
+            }
+
+            .social-detail-statement {
+                padding: 55px 5%;
+            }
+
+            .social-detail-statement-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .social-detail-statement h2 {
+                font-size: 42px;
+                letter-spacing: -1.5px;
+            }
+
+            .social-detail-statement-text {
+                padding-left: 20px;
+            }
+
+            .social-detail-statement-text p {
+                font-size: 11px;
+                line-height: 1.7;
+            }
+
+            .social-detail-platforms {
+                padding: 55px 5%;
+            }
+
+            .social-platform-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .social-platform-list div {
+                min-height: 90px;
+                padding: 17px;
+            }
+
+            .social-platform-list strong {
+                font-size: 12px;
+            }
+
+            .social-platform-list span {
+                font-size: 8px;
+            }
+
+            .social-detail-cta::before {
+                width: 380px;
+                height: 380px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <a href="../../index.html" class="brand">
+
+                <div class="brand-name">
+                    Visibility<span>Pro</span>
+                </div>
+
+                <div class="brand-tagline">
+                    PR • DIGITAL • INFLUENCE
+                </div>
+
+            </a>
+
+
+            <nav class="main-nav">
+
+                <a href="../../index.html">
+                    Home
+                </a>
+
+                <a href="../about.html">
+                    About
+                </a>
+
+                <a href="../services.html" class="active">
+                    Services
+                </a>
+
+                <a href="../../index.html#clients">
+                    Clients
+                </a>
+
+                <a href="../../index.html#case-studies">
+                    Case Studies
+                </a>
+
+            </nav>
+
+
+            <a href="../contact.html" class="contact-btn">
+
+                <span>
+                    Get in Touch
+                </span>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Open menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+        <div class="mobile-nav">
+
+            <a href="../../index.html">
+                Home
+            </a>
+
+            <a href="../about.html">
+                About
+            </a>
+
+            <a href="../services.html">
+                Services
+            </a>
+
+            <a href="../../index.html#clients">
+                Clients
+            </a>
+
+            <a href="../../index.html#case-studies">
+                Case Studies
+            </a>
+
+            <a href="../contact.html">
+                Get in Touch
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main>
+
+
+        <!-- =========================================
+             HERO
+        ========================================== -->
+
+        <section class="service-detail-hero social-detail-hero">
+
+            <div class="service-detail-hero-inner">
+
+                <div class="service-detail-label">
+
+                    <span>
+                        SOCIAL MEDIA
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <h1>
+                    SOCIAL
+                    <span>MEDIA.</span>
+                </h1>
+
+
+                <p>
+                    Building a social presence with strategy,
+                    creative direction, consistent content and
+                    meaningful audience engagement.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             STATEMENT
+        ========================================== -->
+
+        <section class="social-detail-statement">
+
+            <div class="social-detail-statement-inner">
+
+                <div class="service-detail-section-label">
+
+                    <span>
+                        SOCIAL WITH PURPOSE
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <div class="social-detail-statement-grid">
+
+                    <h2>
+                        MORE THAN
+                        <br>
+                        JUST
+                        <span>POSTS.</span>
+                    </h2>
+
+
+                    <div class="social-detail-statement-text">
+
+                        <p>
+                            Social media is where brands,
+                            organisations and public figures
+                            communicate directly with their
+                            audiences.
+                        </p>
+
+                        <p>
+                            We build social presence around a clear
+                            strategy, strong creative direction and
+                            consistent communication rather than
+                            simply filling a content calendar.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             WHAT WE DO
+        ========================================== -->
+
+        <section class="service-detail-offerings">
+
+            <div class="service-detail-offerings-inner">
+
+                <div class="service-detail-section-label">
+
+                    <span>
+                        WHAT WE DO
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <div class="service-detail-offerings-list">
+
+
+                    <div class="service-detail-offering social-detail-offering">
+
+                        <span>
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                SOCIAL STRATEGY
+                            </h3>
+
+                            <p>
+                                Defining the role of social media,
+                                audience priorities, content direction
+                                and communication objectives.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-detail-offering social-detail-offering">
+
+                        <span>
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                CONTENT CREATION
+                            </h3>
+
+                            <p>
+                                Developing platform-ready content
+                                designed around the brand, audience
+                                and communication goal.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-detail-offering social-detail-offering">
+
+                        <span>
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                CREATIVE DIRECTION
+                            </h3>
+
+                            <p>
+                                Creating a consistent visual and
+                                editorial identity across social
+                                channels.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-detail-offering social-detail-offering">
+
+                        <span>
+                            04
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                COMMUNITY MANAGEMENT
+                            </h3>
+
+                            <p>
+                                Supporting conversations, responses
+                                and audience interaction with a
+                                consistent brand voice.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-detail-offering social-detail-offering">
+
+                        <span>
+                            05
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                PUBLISHING &amp; MANAGEMENT
+                            </h3>
+
+                            <p>
+                                Managing content calendars, publishing
+                                workflows and day-to-day social
+                                presence.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-detail-offering social-detail-offering">
+
+                        <span>
+                            06
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                PERFORMANCE &amp; INSIGHTS
+                            </h3>
+
+                            <p>
+                                Reviewing content performance and
+                                audience signals to improve future
+                                communication.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PLATFORMS
+        ========================================== -->
+
+        <section class="social-detail-platforms">
+
+            <div class="social-detail-platforms-inner">
+
+                <div class="social-platform-label">
+
+                    <span>
+                        PLATFORMS
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <div class="social-platform-list">
+
+                    <div>
+
+                        <div>
+
+                            <strong>
+                                INSTAGRAM
+                            </strong>
+
+                            <span>
+                                VISUAL STORYTELLING
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div>
+
+                            <strong>
+                                FACEBOOK
+                            </strong>
+
+                            <span>
+                                COMMUNITY &amp; REACH
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div>
+
+                            <strong>
+                                X / TWITTER
+                            </strong>
+
+                            <span>
+                                REAL-TIME CONVERSATIONS
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <div>
+
+                            <strong>
+                                LINKEDIN
+                            </strong>
+
+                            <span>
+                                PROFESSIONAL VOICE
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             OUR APPROACH
+        ========================================== -->
+
+        <section class="service-detail-process">
+
+            <div class="service-detail-process-inner">
+
+                <div class="service-detail-section-label">
+
+                    <span>
+                        OUR APPROACH
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <div class="service-detail-process-heading">
+
+                    <h2>
+                        FROM
+                        <span>STRATEGY</span>
+                        TO
+                        <br>
+                        CONSISTENT
+                        <span>PRESENCE.</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="service-detail-process-list">
+
+
+                    <div class="service-detail-process-row">
+
+                        <span>
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                DEFINE
+                            </h3>
+
+                            <p>
+                                We understand the brand, audience,
+                                objectives and role of each platform.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-detail-process-row">
+
+                        <span>
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                PLAN
+                            </h3>
+
+                            <p>
+                                We build content themes, formats,
+                                messaging and publishing direction.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-detail-process-row">
+
+                        <span>
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                CREATE
+                            </h3>
+
+                            <p>
+                                We turn the strategy into relevant
+                                content and creative assets.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="service-detail-process-row">
+
+                        <span>
+                            04
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                OPTIMISE
+                            </h3>
+
+                            <p>
+                                We use audience response and content
+                                signals to improve future communication.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             WHO IT'S FOR
+        ========================================== -->
+
+        <section class="service-detail-audience">
+
+            <div class="service-detail-audience-inner">
+
+                <div class="service-detail-section-label">
+
+                    <span>
+                        WHO IT'S FOR
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <div class="service-detail-audience-list">
+
+
+                    <div>
+
+                        <span>
+                            01
+                        </span>
+
+                        <h3>
+                            BUSINESSES &amp; BRANDS
+                        </h3>
+
+                        <p>
+                            For brands that want a consistent,
+                            strategic social presence.
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            02
+                        </span>
+
+                        <h3>
+                            LEADERS &amp; PUBLIC FIGURES
+                        </h3>
+
+                        <p>
+                            For individuals building a clear and
+                            consistent public voice online.
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            03
+                        </span>
+
+                        <h3>
+                            ORGANISATIONS
+                        </h3>
+
+                        <p>
+                            For organisations communicating
+                            initiatives, ideas and developments.
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            04
+                        </span>
+
+                        <h3>
+                            AGENCIES
+                        </h3>
+
+                        <p>
+                            For agencies needing specialised social
+                            media strategy, content or execution support.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             WHY SOCIAL MEDIA
+        ========================================== -->
+
+        <section class="service-detail-why">
+
+            <div class="service-detail-why-inner">
+
+                <div class="service-detail-section-label">
+
+                    <span>
+                        WHY SOCIAL MEDIA?
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <div class="service-detail-why-content">
+
+                    <h2>
+                        BUILD A
+                        <span>VOICE.</span>
+                        <br>
+                        CREATE A
+                        <span>PRESENCE.</span>
+                    </h2>
+
+
+                    <p>
+                        A strong social presence creates a direct
+                        communication layer between an organisation
+                        and its audience. The objective is not simply
+                        activity, but clarity, consistency and relevance.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RELATED SERVICES
+        ========================================== -->
+
+        <section class="service-detail-related">
+
+            <div class="service-detail-related-inner">
+
+                <div class="service-detail-section-label">
+
+                    <span>
+                        RELATED SERVICES
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <div class="service-detail-related-list">
+
+
+                    <a href="public-relations.html">
+
+                        <span>
+                            01
+                        </span>
+
+                        <h3>
+                            PUBLIC RELATIONS
+                        </h3>
+
+                        <b>
+                            ↗
+                        </b>
+
+                    </a>
+
+
+                    <a href="digital-pr.html">
+
+                        <span>
+                            02
+                        </span>
+
+                        <h3>
+                            DIGITAL PR
+                        </h3>
+
+                        <b>
+                            ↗
+                        </b>
+
+                    </a>
+
+
+                    <a href="#">
+
+                        <span>
+                            03
+                        </span>
+
+                        <h3>
+                            REPUTATION MANAGEMENT
+                        </h3>
+
+                        <b>
+                            ↗
+                        </b>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CTA
+        ========================================== -->
+
+        <section class="service-detail-cta social-detail-cta">
+
+            <div class="service-detail-cta-inner">
+
+                <div class="service-detail-section-label">
+
+                    <span>
+                        START A CONVERSATION
+                    </span>
+
+                    <i></i>
+
+                </div>
+
+
+                <h2>
+                    READY TO BUILD
+                    <br>
+                    <span>YOUR SOCIAL PRESENCE?</span>
+                </h2>
+
+
+                <p>
+                    Tell us what you are building, communicating
+                    or trying to make more visible.
+                </p>
+
+
+                <a
+                    href="../contact.html"
+                    class="service-detail-cta-button">
+
+                    <span>
+                        LET'S TALK
+                    </span>
+
+                    <b>
+                        →
+                    </b>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-mountains"></div>
+
+        <div class="footer-arc footer-arc-one"></div>
+        <div class="footer-arc footer-arc-two"></div>
+
+
+        <div class="footer-inner">
+
+            <div class="footer-top">
+
+
+                <div class="footer-brand">
+
+                    <a
+                        href="../../index.html"
+                        class="footer-logo">
+
+                        Visibility<span>Pro</span>
+
+                    </a>
+
+                    <div class="footer-tagline">
+                        PR • DIGITAL • INFLUENCE
+                    </div>
+
+                    <h2>
+                        Visibility with
+                        <span>
+                            purpose.
+                        </span>
+                    </h2>
+
+                    <p>
+                        Strategic communication, digital influence
+                        and reputation built for the moments that matter.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <div class="footer-column-title">
+                        COMPANY
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="../../index.html">
+                            Home
+                        </a>
+
+                        <a href="../about.html">
+                            About
+                        </a>
+
+                        <a href="../../index.html#clients">
+                            Clients
+                        </a>
+
+                        <a href="../../index.html#case-studies">
+                            Case Studies
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <div class="footer-column-title">
+                        SERVICES
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="../services.html">
+                            Services
+                        </a>
+
+                        <a href="public-relations.html">
+                            Public Relations
+                        </a>
+
+                        <a href="digital-pr.html">
+                            Digital PR
+                        </a>
+
+                        <a href="social-media.html">
+                            Social Media
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="footer-column">
+
+                    <div class="footer-column-title">
+                        CONNECT
+                    </div>
+
+                    <div class="footer-links">
+
+                        <a href="../contact.html">
+                            Get in Touch
+                        </a>
+
+                        <a href="#">
+                            Instagram
+                        </a>
+
+                        <a href="#">
+                            LinkedIn
+                        </a>
+
+                        <a href="#">
+                            X / Twitter
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <div class="footer-copyright">
+                    © 2026 Visibility Pro. All rights reserved.
+                </div>
+
+
+                <div class="footer-legal">
+
+                    <a href="#">
+                        Privacy
+                    </a>
+
+                    <a href="#">
+                        Terms
+                    </a>
+
+                    <a href="#">
+                        Sitemap
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="../../script.js"></script>
+
+</body>
+
+</html>
