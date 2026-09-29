@@ -15994,3 +15994,703 @@ body {
         max-height: 65px;
     }
 }
+
+
+
+
+
+
+
+/* ==========================================
+   VISIBILITY PRO - SERVICES PAGE REDESIGN
+   Black & Gold | Desktop | Tablet | Mobile
+========================================== */
+
+.services-redesign {
+    --sr-black: #080808;
+    --sr-dark: #101010;
+    --sr-card: #141414;
+    --sr-gold: #C9973E;
+    --sr-bright: #E7B85C;
+    --sr-white: #F2F2F2;
+    --sr-muted: #A5A5A5;
+    --sr-border: #292929;
+
+    width: 100%;
+    overflow: hidden;
+    background: var(--sr-black);
+    color: var(--sr-white);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.services-redesign *,
+.services-redesign *::before,
+.services-redesign *::after {
+    box-sizing: border-box;
+}
+
+.services-redesign img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.services-redesign a {
+    text-decoration: none;
+}
+
+.services-redesign h1,
+.services-redesign h2,
+.services-redesign h3,
+.services-redesign p {
+    margin-top: 0;
+}
+
+.services-redesign h1 span,
+.services-redesign h2 span {
+    color: var(--sr-gold);
+}
+
+/* ==========================================
+   EYEBROW
+========================================== */
+
+.services-redesign .sr-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--sr-bright);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+.services-redesign .sr-eyebrow span {
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: var(--sr-gold);
+    flex-shrink: 0;
+}
+
+/* ==========================================
+   PRIMARY BUTTON
+========================================== */
+
+.services-redesign .sr-primary-btn {
+    min-height: 43px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 12px 20px;
+    background: var(--sr-gold);
+    color: #080808;
+    border: 1px solid var(--sr-gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: 0.25s ease;
+}
+
+.services-redesign .sr-primary-btn span {
+    font-size: 17px;
+    line-height: 1;
+    color: #080808;
+}
+
+.services-redesign .sr-primary-btn:hover {
+    background: var(--sr-bright);
+    border-color: var(--sr-bright);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   HERO SECTION
+========================================== */
+
+.services-redesign .sr-hero {
+    min-height: 370px;
+    padding: 38px 7%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 35px;
+    background:
+        radial-gradient(
+            ellipse at 80% 50%,
+            rgba(201, 151, 62, 0.10),
+            transparent 55%
+        ),
+        var(--sr-black);
+}
+
+.services-redesign .sr-hero-content {
+    max-width: 540px;
+    position: relative;
+    z-index: 1;
+}
+
+.services-redesign .sr-hero h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(48px, 6vw, 78px);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -2px;
+    margin-bottom: 19px;
+}
+
+.services-redesign .sr-hero-content > p {
+    max-width: 410px;
+    color: #C5C5C5;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.services-redesign .sr-hero-visual {
+    width: 100%;
+    height: 290px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 151, 62, 0.15);
+    border-radius: 4px;
+}
+
+.services-redesign .sr-hero-visual img {
+    transition: transform 0.5s ease;
+}
+
+.services-redesign .sr-hero-visual:hover img {
+    transform: scale(1.035);
+}
+
+/* ==========================================
+   SERVICES SECTION
+========================================== */
+
+.services-redesign .sr-services {
+    padding: 38px 7%;
+    background: #101010;
+}
+
+.services-redesign .sr-services-intro {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr 1fr;
+    align-items: end;
+    gap: 25px;
+    margin-bottom: 23px;
+}
+
+.services-redesign .sr-services-intro .sr-eyebrow {
+    align-self: start;
+    margin-top: 7px;
+}
+
+.services-redesign .sr-services-intro h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 0;
+}
+
+.services-redesign .sr-services-intro > p {
+    max-width: 280px;
+    color: var(--sr-muted);
+    font-size: 12px;
+    line-height: 1.65;
+    margin-bottom: 2px;
+}
+
+/* Services Grid */
+
+.services-redesign .sr-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.services-redesign .sr-service-card {
+    position: relative;
+    min-width: 0;
+    min-height: 172px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 16px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #171717, #0D0D0D);
+    border: 1px solid var(--sr-border);
+    border-radius: 4px;
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+.services-redesign .sr-service-card:hover {
+    border-color: var(--sr-gold);
+    background: #191714;
+    transform: translateY(-3px);
+}
+
+.services-redesign .sr-card-number {
+    position: absolute;
+    top: 13px;
+    right: 14px;
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.services-redesign .sr-card-icon {
+    width: 31px;
+    height: 31px;
+    margin-bottom: 12px;
+    color: var(--sr-gold);
+}
+
+.services-redesign .sr-card-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.services-redesign .sr-service-card h3 {
+    max-width: 95%;
+    color: var(--sr-white);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 7px;
+}
+
+.services-redesign .sr-service-card p {
+    max-width: 95%;
+    color: var(--sr-muted);
+    font-size: 10px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+.services-redesign .sr-card-arrow {
+    position: absolute;
+    right: 13px;
+    bottom: 12px;
+    color: var(--sr-bright);
+    font-size: 16px;
+    transition: transform 0.25s ease;
+}
+
+.services-redesign .sr-service-card:hover .sr-card-arrow {
+    transform: translateX(4px);
+}
+
+/* ==========================================
+   APPROACH SECTION
+========================================== */
+
+.services-redesign .sr-approach {
+    padding: 38px 7%;
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    align-items: center;
+    gap: 20px 35px;
+    background: #080808;
+}
+
+.services-redesign .sr-approach-visual {
+    width: 100%;
+    height: 215px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.services-redesign .sr-approach-visual img {
+    transition: transform 0.4s ease;
+}
+
+.services-redesign .sr-approach-visual:hover img {
+    transform: scale(1.04);
+}
+
+.services-redesign .sr-approach-content {
+    max-width: 430px;
+}
+
+.services-redesign .sr-approach-content h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+}
+
+.services-redesign .sr-approach-description {
+    color: var(--sr-muted);
+    font-size: 12px;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* Process */
+
+.services-redesign .sr-process {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 20px 1fr 20px 1fr 20px 1fr;
+    align-items: center;
+    gap: 10px;
+    padding-top: 12px;
+}
+
+.services-redesign .sr-process-step {
+    min-width: 0;
+    padding: 9px 11px;
+    border-left: 1px solid rgba(201, 151, 62, 0.4);
+}
+
+.services-redesign .sr-step-number {
+    display: block;
+    color: var(--sr-bright);
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.services-redesign .sr-process-step h3 {
+    color: var(--sr-white);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.services-redesign .sr-process-step p {
+    color: var(--sr-muted);
+    font-size: 10px;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+.services-redesign .sr-process-connector {
+    height: 1px;
+    width: 100%;
+    background: rgba(201, 151, 62, 0.45);
+}
+
+/* ==========================================
+   FINAL CTA SECTION
+========================================== */
+
+.services-redesign .sr-cta {
+    min-height: 210px;
+    padding: 32px 7%;
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    align-items: center;
+    gap: 25px;
+    background:
+        radial-gradient(
+            ellipse at 30% 50%,
+            rgba(201, 151, 62, 0.12),
+            transparent 65%
+        ),
+        #111111;
+    border-top: 1px solid #29241B;
+}
+
+.services-redesign .sr-cta-content {
+    max-width: 550px;
+}
+
+.services-redesign .sr-cta h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 10px;
+}
+
+.services-redesign .sr-cta p {
+    color: var(--sr-muted);
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.services-redesign .sr-cta-visual {
+    width: 145px;
+    height: 145px;
+    justify-self: center;
+    overflow: hidden;
+}
+
+.services-redesign .sr-cta-visual img {
+    object-fit: contain;
+}
+
+/* ==========================================
+   TABLET RESPONSIVE
+========================================== */
+
+@media (max-width: 1000px) {
+
+    .services-redesign .sr-hero {
+        padding: 32px 5%;
+        gap: 22px;
+        min-height: 330px;
+    }
+
+    .services-redesign .sr-hero h1 {
+        font-size: clamp(42px, 6vw, 60px);
+    }
+
+    .services-redesign .sr-hero-visual {
+        height: 250px;
+    }
+
+    .services-redesign .sr-services,
+    .services-redesign .sr-approach {
+        padding: 32px 5%;
+    }
+
+    .services-redesign .sr-services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services-redesign .sr-service-card {
+        min-height: 150px;
+    }
+
+    .services-redesign .sr-approach-visual {
+        height: 190px;
+    }
+
+    .services-redesign .sr-cta {
+        padding: 30px 5%;
+    }
+}
+
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+
+    /* Hero */
+
+    .services-redesign .sr-hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 25px 5%;
+    }
+
+    .services-redesign .sr-hero-content {
+        max-width: 100%;
+    }
+
+    .services-redesign .sr-hero h1 {
+        font-size: clamp(38px, 10vw, 49px);
+        letter-spacing: -1px;
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+
+    .services-redesign .sr-hero-content > p {
+        font-size: 12px;
+        line-height: 1.6;
+        margin-bottom: 17px;
+    }
+
+    .services-redesign .sr-hero-visual {
+        height: 195px;
+    }
+
+    .services-redesign .sr-primary-btn {
+        min-height: 40px;
+        padding: 10px 14px;
+        gap: 10px;
+        font-size: 10px;
+    }
+
+    /* Services */
+
+    .services-redesign .sr-services {
+        padding: 27px 5%;
+    }
+
+    .services-redesign .sr-services-intro {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 17px;
+    }
+
+    .services-redesign .sr-services-intro .sr-eyebrow {
+        margin-top: 0;
+        margin-bottom: 3px;
+    }
+
+    .services-redesign .sr-services-intro h2 {
+        font-size: 34px;
+        line-height: 1.02;
+    }
+
+    .services-redesign .sr-services-intro > p {
+        max-width: 320px;
+        font-size: 11px;
+        margin-bottom: 0;
+    }
+
+    .services-redesign .sr-services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .services-redesign .sr-service-card {
+        min-height: 145px;
+        padding: 13px 11px;
+    }
+
+    .services-redesign .sr-card-number {
+        top: 10px;
+        right: 10px;
+        font-size: 9px;
+    }
+
+    .services-redesign .sr-card-icon {
+        width: 27px;
+        height: 27px;
+        margin-bottom: 10px;
+    }
+
+    .services-redesign .sr-service-card h3 {
+        font-size: 11px;
+        line-height: 1.4;
+        margin-bottom: 5px;
+    }
+
+    .services-redesign .sr-service-card p {
+        font-size: 9px;
+        line-height: 1.5;
+    }
+
+    .services-redesign .sr-card-arrow {
+        right: 10px;
+        bottom: 8px;
+        font-size: 14px;
+    }
+
+    /* Approach */
+
+    .services-redesign .sr-approach {
+        grid-template-columns: 1fr;
+        padding: 27px 5%;
+        gap: 15px;
+    }
+
+    .services-redesign .sr-approach-visual {
+        height: 185px;
+    }
+
+    .services-redesign .sr-approach-content h2 {
+        font-size: 34px;
+        line-height: 1.08;
+    }
+
+    .services-redesign .sr-approach-description {
+        font-size: 11px;
+    }
+
+    .services-redesign .sr-process {
+        grid-column: auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px 8px;
+        padding-top: 5px;
+    }
+
+    .services-redesign .sr-process-step {
+        padding: 8px 10px;
+    }
+
+    .services-redesign .sr-process-connector {
+        display: none;
+    }
+
+    .services-redesign .sr-step-number {
+        font-size: 9px;
+        margin-bottom: 6px;
+    }
+
+    .services-redesign .sr-process-step h3 {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    .services-redesign .sr-process-step p {
+        font-size: 9px;
+        line-height: 1.5;
+    }
+
+    /* CTA */
+
+    .services-redesign .sr-cta {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 28px 5%;
+    }
+
+    .services-redesign .sr-cta h2 {
+        font-size: 34px;
+        line-height: 1.08;
+    }
+
+    .services-redesign .sr-cta p {
+        font-size: 11px;
+        margin-bottom: 14px;
+    }
+
+    .services-redesign .sr-cta-visual {
+        width: 75px;
+        height: 75px;
+        justify-self: start;
+    }
+}
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 360px) {
+
+    .services-redesign .sr-hero h1 {
+        font-size: 35px;
+    }
+
+    .services-redesign .sr-hero-visual {
+        height: 165px;
+    }
+
+    .services-redesign .sr-service-card {
+        min-height: 140px;
+        padding: 11px 9px;
+    }
+
+    .services-redesign .sr-service-card h3 {
+        font-size: 10px;
+    }
+
+    .services-redesign .sr-service-card p {
+        font-size: 8px;
+    }
+
+    .services-redesign .sr-process {
+        gap: 8px;
+    }
+}
