@@ -253,3 +253,37 @@ if (menuToggle && mobileNav) {
     });
 
 }
+
+
+
+
+
+// GOLDEN WAVE PRELOADER
+(function () {
+    const preloader = document.getElementById("sitePreloader");
+    if (!preloader) return;
+
+    let hidden = false;
+
+    function hidePreloader() {
+        if (hidden) return;
+        hidden = true;
+
+        preloader.classList.add("is-hidden");
+
+        setTimeout(() => {
+            preloader.remove();
+        }, 700);
+    }
+
+    if (document.readyState === "complete") {
+        setTimeout(hidePreloader, 1200);
+    } else {
+        window.addEventListener("load", () => {
+            setTimeout(hidePreloader, 1200);
+        }, { once: true });
+    }
+
+    // Safety fallback
+    setTimeout(hidePreloader, 6000);
+})();
