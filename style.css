@@ -13612,3 +13612,42 @@ body {
 .site-footer {
     margin-top: 0 !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* TEAM SECTION - MOBILE IMAGE FIX */
+@media (max-width: 768px) {
+
+    .team-section .team-image,
+    .team-section .team-hero-image,
+    .team-section .team-visual,
+    .team-hero .team-image,
+    .team-intro-image {
+        width: 100%;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible;
+    }
+
+    .team-section .team-image img,
+    .team-section .team-hero-image img,
+    .team-section .team-visual img,
+    .team-hero .team-image img,
+    .team-intro-image img {
+        display: block;
+        width: 100%;
+        height: auto !important;
+        max-height: none !important;
+        object-fit: contain !important;
+        object-position: center;
+    }
+}
