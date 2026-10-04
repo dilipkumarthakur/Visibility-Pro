@@ -142,30 +142,148 @@ function createReviewCard(review) {
 const reviewsContainer =
     document.getElementById("clientReviewsList");
 
+/* =========================================
+   CLIENT REVIEWS API
+========================================= */
+
+const REVIEWS_API =
+    "https://script.google.com/macros/s/AKfycbwKfsRrNtHT4YzEai8F0u9esxhG4qRzUSkKLXikb7N04uTS2_inHjxTSi41rb7KGHJ2/exec";
+
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function createReviewCard(review) {
+
+    const name =
+        escapeHTML(review.name || "Client");
+
+    const feedback =
+        escapeHTML(review.feedback || "");
+
+    const rating =
+        Math.max(
+            1,
+            Math.min(
+                5,
+                Number(review.rating) || 5
+            )
+        );
+
+    const firstLetter =
+        name.charAt(0).toUpperCase();
+
+
+    return `
+        <article class="review-card">
+
+            <div class="review-top">
+
+                <div class="review-person">
+
+                    <div class="review-avatar">
+                        ${firstLetter}
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            ${name}
+                        </h3>
+
+                        <span>
+                            Client Feedback
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="review-google">
+                    G
+                </div>
+
+            </div>
+
+
+            <div class="review-stars">
+
+                ${"★".repeat(rating)}
+                ${"☆".repeat(5 - rating)}
+
+            </div>
+
+
+            <p>
+                ${feedback}
+            </p>
+
+        </article>
+    `;
+
+}
+
+
+/* Homepage reviews container */
+
+const reviewsContainer =
+    document.getElementById("clientReviewsList");
+
+
 async function loadClientReviews() {
 
     if (!reviewsContainer) return;
+
 
     try {
 
         const response =
             await fetch(REVIEWS_API);
 
+
+        if (!response.ok) {
+            throw new Error(
+                "Reviews API request failed."
+            );
+        }
+
+
         const data =
             await response.json();
 
+
         if (
             !data.success ||
-            !Array.isArray(data.reviews) ||
-            data.reviews.length === 0
+            !Array.isArray(data.reviews)
         ) {
+
             return;
+
         }
+
+
+        if (data.reviews.length === 0) {
+
+            return;
+
+        }
+
 
         reviewsContainer.innerHTML =
             data.reviews
                 .map(createReviewCard)
                 .join("");
+
 
     } catch (error) {
 
@@ -175,7 +293,9 @@ async function loadClientReviews() {
         );
 
     }
+
 }
+
 
 loadClientReviews();
 
