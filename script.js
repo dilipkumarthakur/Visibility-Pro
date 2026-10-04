@@ -287,3 +287,390 @@ if (menuToggle && mobileNav) {
     // Safety fallback
     setTimeout(hidePreloader, 6000);
 })();
+
+
+
+
+
+/* =====================================================
+   ENQUIRY POPUP + PREMIUM SOUND
+====================================================== */
+
+const enquiryPopup = document.getElementById("enquiryPopup");
+const enquiryPopupClose = document.getElementById("enquiryPopupClose");
+
+if (enquiryPopup) {
+
+    let popupCount = 0;
+    let repeatTimer = null;
+
+    /* ---------------------------------------------
+       SETTINGS
+    --------------------------------------------- */
+
+    const MAX_POPUPS = 3;
+
+    // First popup after 2.5 seconds
+    const FIRST_DELAY = 2100;
+
+    // TESTING: popup repeats after 10 seconds
+    const REPEAT_DELAY = 10000;
+
+    /*
+       FINAL WEBSITE:
+       Change 10000 to 60000
+       = 60 seconds
+    */
+
+
+    /* =================================================
+       PREMIUM POPUP SOUND
+    ================================================= */
+
+    function playEnquirySound() {
+
+        try {
+
+            const AudioContext =
+                window.AudioContext ||
+                window.webkitAudioContext;
+
+            if (!AudioContext) {
+                return;
+            }
+
+
+            const audioContext = new AudioContext();
+
+
+            /* Resume audio if browser suspended it */
+
+            if (audioContext.state === "suspended") {
+                audioContext.resume();
+            }
+
+
+            /* =========================================
+               FIRST TONE
+            ========================================= */
+
+            const oscillator1 =
+                audioContext.createOscillator();
+
+            const gain1 =
+                audioContext.createGain();
+
+
+            oscillator1.type = "sine";
+
+
+            oscillator1.frequency.setValueAtTime(
+                740,
+                audioContext.currentTime
+            );
+
+            oscillator1.frequency.exponentialRampToValueAtTime(
+                988,
+                audioContext.currentTime + 0.14
+            );
+
+
+            gain1.gain.setValueAtTime(
+                0.0001,
+                audioContext.currentTime
+            );
+
+            gain1.gain.exponentialRampToValueAtTime(
+                0.30,
+                audioContext.currentTime + 0.025
+            );
+
+            gain1.gain.exponentialRampToValueAtTime(
+                0.0001,
+                audioContext.currentTime + 0.30
+            );
+
+
+            oscillator1.connect(gain1);
+
+            gain1.connect(
+                audioContext.destination
+            );
+
+
+            oscillator1.start();
+
+            oscillator1.stop(
+                audioContext.currentTime + 0.30
+            );
+
+
+            /* =========================================
+               SECOND HIGHER TONE
+            ========================================= */
+
+            const oscillator2 =
+                audioContext.createOscillator();
+
+            const gain2 =
+                audioContext.createGain();
+
+
+            oscillator2.type = "sine";
+
+
+            oscillator2.frequency.setValueAtTime(
+                988,
+                audioContext.currentTime + 0.13
+            );
+
+            oscillator2.frequency.exponentialRampToValueAtTime(
+                1318,
+                audioContext.currentTime + 0.25
+            );
+
+
+            gain2.gain.setValueAtTime(
+                0.0001,
+                audioContext.currentTime + 0.13
+            );
+
+            gain2.gain.exponentialRampToValueAtTime(
+                0.25,
+                audioContext.currentTime + 0.16
+            );
+
+            gain2.gain.exponentialRampToValueAtTime(
+                0.0001,
+                audioContext.currentTime + 0.48
+            );
+
+
+            oscillator2.connect(gain2);
+
+            gain2.connect(
+                audioContext.destination
+            );
+
+
+            oscillator2.start(
+                audioContext.currentTime + 0.13
+            );
+
+            oscillator2.stop(
+                audioContext.currentTime + 0.48
+            );
+
+
+            /* =========================================
+               CLEANUP
+            ========================================= */
+
+            setTimeout(function () {
+
+                if (
+                    audioContext.state !== "closed"
+                ) {
+
+                    audioContext.close();
+
+                }
+
+            }, 700);
+
+
+        } catch (error) {
+
+            console.log(
+                "Popup sound could not play:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
+       OPEN POPUP
+    ================================================= */
+
+    function openEnquiryPopup() {
+
+        /* Maximum popup limit */
+
+        if (popupCount >= MAX_POPUPS) {
+            return;
+        }
+
+
+        /* Show popup */
+
+        enquiryPopup.classList.add("show");
+
+        enquiryPopup.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+
+        /* Play sound */
+
+        playEnquirySound();
+
+
+        /* Increase count */
+
+        popupCount++;
+
+    }
+
+
+    /* =================================================
+       CLOSE POPUP
+    ================================================= */
+
+    function closeEnquiryPopup() {
+
+        enquiryPopup.classList.remove("show");
+
+        enquiryPopup.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+
+        /* Schedule next popup */
+
+        if (popupCount < MAX_POPUPS) {
+
+            clearTimeout(repeatTimer);
+
+
+            repeatTimer = setTimeout(
+                function () {
+
+                    openEnquiryPopup();
+
+                },
+                REPEAT_DELAY
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
+       CLOSE BUTTON
+    ================================================= */
+
+    if (enquiryPopupClose) {
+
+        enquiryPopupClose.addEventListener(
+            "click",
+            closeEnquiryPopup
+        );
+
+    }
+
+
+    /* =================================================
+       CLICK OUTSIDE POPUP
+    ================================================= */
+
+    enquiryPopup.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                event.target.classList.contains(
+                    "enquiry-popup-overlay"
+                )
+            ) {
+
+                closeEnquiryPopup();
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       ESCAPE KEY
+    ================================================= */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                if (
+                    enquiryPopup.classList.contains(
+                        "show"
+                    )
+                ) {
+
+                    closeEnquiryPopup();
+
+                }
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       FORM SUBMISSION
+    ================================================= */
+
+    const enquiryForm =
+        enquiryPopup.querySelector(
+            ".enquiry-popup-form"
+        );
+
+
+    if (enquiryForm) {
+
+        enquiryForm.addEventListener(
+            "submit",
+            function () {
+
+                /*
+                 * Stop future popup
+                 */
+
+                clearTimeout(repeatTimer);
+
+                popupCount = MAX_POPUPS;
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       FIRST POPUP
+    ================================================= */
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            setTimeout(
+                function () {
+
+                    openEnquiryPopup();
+
+                },
+                FIRST_DELAY
+            );
+
+        }
+    );
+
+}
