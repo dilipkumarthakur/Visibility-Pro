@@ -74,71 +74,110 @@ if (teamCarousel && teamCards.length && teamDots.length) {
 
 
 /* =========================================
-   GOOGLE REVIEWS CAROUSEL
+   GOOGLE / CLIENT REVIEWS
 ========================================= */
 
-const reviewsCarousel = document.querySelector(".reviews-carousel");
-const reviewCards = document.querySelectorAll(".review-card");
-const reviewDots = document.querySelectorAll(".review-dot");
+const REVIEWS_API =
+    "https://script.google.com/macros/s/AKfycbwKfsRrNtHT4YzEai8F0u9esxhG4qRzUSkKLXikb7N04uTS2_inHjxTSi41rb7KGHJ2/exec";
 
-if (reviewsCarousel && reviewCards.length && reviewDots.length) {
-
-    const updateReviewDots = () => {
-
-        const scrollLeft = reviewsCarousel.scrollLeft;
-
-        const cardWidth =
-            reviewCards[0].offsetWidth + 12;
-
-        let activeIndex =
-            Math.round(scrollLeft / cardWidth);
-
-        activeIndex = Math.min(
-            activeIndex,
-            reviewDots.length - 1
-        );
-
-        reviewDots.forEach((dot, index) => {
-
-            dot.classList.toggle(
-                "active",
-                index === activeIndex
-            );
-
-        });
-
-    };
-
-
-    reviewsCarousel.addEventListener(
-        "scroll",
-        updateReviewDots,
-        { passive: true }
-    );
-
-
-    reviewDots.forEach((dot, index) => {
-
-        dot.addEventListener("click", () => {
-
-            if (!reviewCards[index]) return;
-
-            reviewsCarousel.scrollTo({
-
-                left:
-                    reviewCards[index].offsetLeft -
-                    (reviewsCarousel.offsetWidth * 0.05),
-
-                behavior: "smooth"
-
-            });
-
-        });
-
-    });
-
+function escapeHTML(value) {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
 
+function createReviewCard(review) {
+
+    const name = escapeHTML(review.name || "Client");
+    const feedback = escapeHTML(review.feedback || "");
+
+    const rating = Math.max(
+        1,
+        Math.min(5, Number(review.rating) || 5)
+    );
+
+    const firstLetter =
+        name.charAt(0).toUpperCase();
+
+    return `
+        <article class="review-card">
+
+            <div class="review-top">
+
+                <div class="review-person">
+
+                    <div class="review-avatar">
+                        ${firstLetter}
+                    </div>
+
+                    <div>
+                        <h3>${name}</h3>
+                        <span>Client Feedback</span>
+                    </div>
+
+                </div>
+
+                <div class="review-google">
+                    G
+                </div>
+
+            </div>
+
+            <div class="review-stars">
+                ${"★".repeat(rating)}
+                ${"☆".repeat(5 - rating)}
+            </div>
+
+            <p>
+                ${feedback}
+            </p>
+
+        </article>
+    `;
+}
+
+const reviewsContainer =
+    document.getElementById("clientReviewsList");
+
+async function loadClientReviews() {
+
+    if (!reviewsContainer) return;
+
+    try {
+
+        const response =
+            await fetch(REVIEWS_API);
+
+        const data =
+            await response.json();
+
+        if (
+            !data.success ||
+            !Array.isArray(data.reviews) ||
+            data.reviews.length === 0
+        ) {
+            return;
+        }
+
+        reviewsContainer.innerHTML =
+            data.reviews
+                .map(createReviewCard)
+                .join("");
+
+    } catch (error) {
+
+        console.error(
+            "Reviews could not be loaded:",
+            error
+        );
+
+    }
+}
+
+loadClientReviews();
 
 
 
