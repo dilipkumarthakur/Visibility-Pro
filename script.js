@@ -13,17 +13,15 @@ if (teamCarousel && teamCards.length && teamDots.length) {
         const scrollLeft = teamCarousel.scrollLeft;
 
         const cardWidth =
-            teamCards[0].offsetWidth +
-            10;
+            teamCards[0].offsetWidth + 10;
 
         let activeIndex =
             Math.round(scrollLeft / cardWidth);
 
-        activeIndex =
-            Math.min(
-                activeIndex,
-                teamDots.length - 1
-            );
+        activeIndex = Math.min(
+            activeIndex,
+            teamDots.length - 1
+        );
 
         teamDots.forEach((dot, index) => {
 
@@ -51,11 +49,13 @@ if (teamCarousel && teamCards.length && teamDots.length) {
             if (teamCards[index]) {
 
                 teamCarousel.scrollTo({
+
                     left:
                         teamCards[index].offsetLeft -
                         (teamCarousel.offsetWidth * 0.05),
 
                     behavior: "smooth"
+
                 });
 
             }
@@ -67,84 +67,9 @@ if (teamCarousel && teamCards.length && teamDots.length) {
 }
 
 
-
-
-
-
-
-
-/* =========================================
-   GOOGLE / CLIENT REVIEWS
-========================================= */
-
-const REVIEWS_API =
-    "https://script.google.com/macros/s/AKfycbwKfsRrNtHT4YzEai8F0u9esxhG4qRzUSkKLXikb7N04uTS2_inHjxTSi41rb7KGHJ2/exec";
-
-function escapeHTML(value) {
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
-function createReviewCard(review) {
-
-    const name = escapeHTML(review.name || "Client");
-    const feedback = escapeHTML(review.feedback || "");
-
-    const rating = Math.max(
-        1,
-        Math.min(5, Number(review.rating) || 5)
-    );
-
-    const firstLetter =
-        name.charAt(0).toUpperCase();
-
-    return `
-        <article class="review-card">
-
-            <div class="review-top">
-
-                <div class="review-person">
-
-                    <div class="review-avatar">
-                        ${firstLetter}
-                    </div>
-
-                    <div>
-                        <h3>${name}</h3>
-                        <span>Client Feedback</span>
-                    </div>
-
-                </div>
-
-                <div class="review-google">
-                    G
-                </div>
-
-            </div>
-
-            <div class="review-stars">
-                ${"★".repeat(rating)}
-                ${"☆".repeat(5 - rating)}
-            </div>
-
-            <p>
-                ${feedback}
-            </p>
-
-        </article>
-    `;
-}
-
-const reviewsContainer =
-    document.getElementById("clientReviewsList");
-
-/* =========================================
-   CLIENT REVIEWS API
-========================================= */
+// =========================================
+// CLIENT REVIEWS API
+// =========================================
 
 const REVIEWS_API =
     "https://script.google.com/macros/s/AKfycbwKfsRrNtHT4YzEai8F0u9esxhG4qRzUSkKLXikb7N04uTS2_inHjxTSi41rb7KGHJ2/exec";
@@ -234,27 +159,51 @@ function createReviewCard(review) {
 }
 
 
-/* Homepage reviews container */
-
 const reviewsContainer =
     document.getElementById("clientReviewsList");
 
 
 async function loadClientReviews() {
 
-    if (!reviewsContainer) return;
+    if (!reviewsContainer) {
+        return;
+    }
+
+
+    const controller =
+        new AbortController();
+
+
+    const timeout =
+        setTimeout(() => {
+
+            controller.abort();
+
+        }, 5000);
 
 
     try {
 
         const response =
-            await fetch(REVIEWS_API);
+            await fetch(
+                REVIEWS_API,
+                {
+                    method: "GET",
+                    signal: controller.signal,
+                    cache: "no-store"
+                }
+            );
+
+
+        clearTimeout(timeout);
 
 
         if (!response.ok) {
+
             throw new Error(
                 "Reviews API request failed."
             );
+
         }
 
 
@@ -263,6 +212,7 @@ async function loadClientReviews() {
 
 
         if (
+            !data ||
             !data.success ||
             !Array.isArray(data.reviews)
         ) {
@@ -287,6 +237,8 @@ async function loadClientReviews() {
 
     } catch (error) {
 
+        clearTimeout(timeout);
+
         console.error(
             "Reviews could not be loaded:",
             error
@@ -297,194 +249,308 @@ async function loadClientReviews() {
 }
 
 
-loadClientReviews();
+// =========================================
+// LOAD REVIEWS AFTER PAGE LOAD
+// =========================================
 
+window.addEventListener(
+    "load",
+    function () {
 
+        setTimeout(
+            function () {
 
+                loadClientReviews();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* =========================================
-   FOOTER / INTERNAL LINK SMOOTH SCROLL
-========================================= */
-
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-
-    link.addEventListener("click", function (event) {
-
-        const targetId = this.getAttribute("href");
-
-        if (!targetId || targetId === "#") {
-            return;
-        }
-
-        const target = document.querySelector(targetId);
-
-        if (!target) {
-            return;
-        }
-
-        event.preventDefault();
-
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    });
-
-});
-
-
-
-
-
-
-
-/* =========================================
-   MOBILE MENU
-========================================= */
-
-const menuToggle = document.querySelector(".menu-toggle");
-const mobileNav = document.querySelector(".mobile-nav");
-
-if (menuToggle && mobileNav) {
-
-    menuToggle.addEventListener("click", function () {
-
-        const isOpen =
-            mobileNav.classList.toggle("show");
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
+            },
+            500
         );
 
-        menuToggle.setAttribute(
-            "aria-label",
-            isOpen ? "Close menu" : "Open menu"
-        );
-
-    });
+    }
+);
 
 
-    mobileNav.querySelectorAll("a").forEach(link => {
+// =========================================
+// REVIEW SCROLL
+// =========================================
 
-        link.addEventListener("click", function () {
+const reviewsCarousel =
+    document.querySelector(".reviews-carousel");
 
-            mobileNav.classList.remove("show");
 
-            menuToggle.setAttribute(
-                "aria-expanded",
-                "false"
-            );
+if (reviewsCarousel) {
 
-            menuToggle.setAttribute(
-                "aria-label",
-                "Open menu"
-            );
+    reviewsCarousel.addEventListener(
+        "wheel",
+        function (event) {
 
-        });
+            if (
+                Math.abs(event.deltaY) >
+                Math.abs(event.deltaX)
+            ) {
 
-    });
+                event.preventDefault();
+
+                reviewsCarousel.scrollLeft +=
+                    event.deltaY;
+
+            }
+
+        },
+        {
+            passive: false
+        }
+    );
 
 }
 
 
+// =========================================
+// FOOTER / INTERNAL LINK SMOOTH SCROLL
+// =========================================
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function (event) {
+
+                const targetId =
+                    this.getAttribute("href");
 
 
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
 
+                    return;
+
+                }
+
+
+                const target =
+                    document.querySelector(targetId);
+
+
+                if (!target) {
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+
+                target.scrollIntoView({
+
+                    behavior: "smooth",
+                    block: "start"
+
+                });
+
+            }
+        );
+
+    });
+
+
+// =========================================
+// MOBILE MENU
+// =========================================
+
+const menuToggle =
+    document.querySelector(".menu-toggle");
+
+const mobileNav =
+    document.querySelector(".mobile-nav");
+
+
+if (menuToggle && mobileNav) {
+
+    menuToggle.addEventListener(
+        "click",
+        function () {
+
+            const isOpen =
+                mobileNav.classList.toggle("show");
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen ? "true" : "false"
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-label",
+                isOpen
+                    ? "Close menu"
+                    : "Open menu"
+            );
+
+        }
+    );
+
+
+    mobileNav
+        .querySelectorAll("a")
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    mobileNav.classList.remove(
+                        "show"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+
+                    menuToggle.setAttribute(
+                        "aria-label",
+                        "Open menu"
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+
+// =========================================
 // GOLDEN WAVE PRELOADER
+// =========================================
+
 (function () {
-    const preloader = document.getElementById("sitePreloader");
-    if (!preloader) return;
+
+    const preloader =
+        document.getElementById(
+            "sitePreloader"
+        );
+
+
+    if (!preloader) {
+        return;
+    }
+
 
     let hidden = false;
 
+
     function hidePreloader() {
-        if (hidden) return;
+
+        if (hidden) {
+            return;
+        }
+
+
         hidden = true;
 
-        preloader.classList.add("is-hidden");
+
+        preloader.classList.add(
+            "is-hidden"
+        );
+
 
         setTimeout(() => {
-            preloader.remove();
+
+            if (preloader) {
+
+                preloader.remove();
+
+            }
+
         }, 700);
+
     }
 
-    if (document.readyState === "complete") {
-        setTimeout(hidePreloader, 1200);
+
+    if (
+        document.readyState ===
+        "complete"
+    ) {
+
+        setTimeout(
+            hidePreloader,
+            1200
+        );
+
     } else {
-        window.addEventListener("load", () => {
-            setTimeout(hidePreloader, 1200);
-        }, { once: true });
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                setTimeout(
+                    hidePreloader,
+                    1200
+                );
+
+            },
+            {
+                once: true
+            }
+        );
+
     }
+
 
     // Safety fallback
-    setTimeout(hidePreloader, 6000);
+    setTimeout(
+        hidePreloader,
+        6000
+    );
+
 })();
 
 
+// =========================================
+// ENQUIRY POPUP + PREMIUM SOUND
+// =========================================
 
+const enquiryPopup =
+    document.getElementById(
+        "enquiryPopup"
+    );
 
+const enquiryPopupClose =
+    document.getElementById(
+        "enquiryPopupClose"
+    );
 
-/* =====================================================
-   ENQUIRY POPUP + PREMIUM SOUND
-====================================================== */
-
-const enquiryPopup = document.getElementById("enquiryPopup");
-const enquiryPopupClose = document.getElementById("enquiryPopupClose");
 
 if (enquiryPopup) {
 
     let popupCount = 0;
+
     let repeatTimer = null;
 
-    /* ---------------------------------------------
-       SETTINGS
-    --------------------------------------------- */
+
+    // =========================================
+    // SETTINGS
+    // =========================================
 
     const MAX_POPUPS = 3;
 
-    // First popup after 2.5 seconds
     const FIRST_DELAY = 2100;
 
-    // TESTING: popup repeats after 10 seconds
     const REPEAT_DELAY = 10000;
 
-    /*
-       FINAL WEBSITE:
-       Change 10000 to 60000
-       = 60 seconds
-    */
 
-
-    /* =================================================
-       PREMIUM POPUP SOUND
-    ================================================= */
+    // =========================================
+    // PREMIUM POPUP SOUND
+    // =========================================
 
     function playEnquirySound() {
 
@@ -494,24 +560,31 @@ if (enquiryPopup) {
                 window.AudioContext ||
                 window.webkitAudioContext;
 
+
             if (!AudioContext) {
+
                 return;
+
             }
 
 
-            const audioContext = new AudioContext();
+            const audioContext =
+                new AudioContext();
 
 
-            /* Resume audio if browser suspended it */
+            if (
+                audioContext.state ===
+                "suspended"
+            ) {
 
-            if (audioContext.state === "suspended") {
                 audioContext.resume();
+
             }
 
 
-            /* =========================================
-               FIRST TONE
-            ========================================= */
+            // =========================================
+            // FIRST TONE
+            // =========================================
 
             const oscillator1 =
                 audioContext.createOscillator();
@@ -528,10 +601,12 @@ if (enquiryPopup) {
                 audioContext.currentTime
             );
 
-            oscillator1.frequency.exponentialRampToValueAtTime(
-                988,
-                audioContext.currentTime + 0.14
-            );
+
+            oscillator1.frequency
+                .exponentialRampToValueAtTime(
+                    988,
+                    audioContext.currentTime + 0.14
+                );
 
 
             gain1.gain.setValueAtTime(
@@ -539,15 +614,19 @@ if (enquiryPopup) {
                 audioContext.currentTime
             );
 
-            gain1.gain.exponentialRampToValueAtTime(
-                0.30,
-                audioContext.currentTime + 0.025
-            );
 
-            gain1.gain.exponentialRampToValueAtTime(
-                0.0001,
-                audioContext.currentTime + 0.30
-            );
+            gain1.gain
+                .exponentialRampToValueAtTime(
+                    0.30,
+                    audioContext.currentTime + 0.025
+                );
+
+
+            gain1.gain
+                .exponentialRampToValueAtTime(
+                    0.0001,
+                    audioContext.currentTime + 0.30
+                );
 
 
             oscillator1.connect(gain1);
@@ -559,14 +638,15 @@ if (enquiryPopup) {
 
             oscillator1.start();
 
+
             oscillator1.stop(
                 audioContext.currentTime + 0.30
             );
 
 
-            /* =========================================
-               SECOND HIGHER TONE
-            ========================================= */
+            // =========================================
+            // SECOND HIGHER TONE
+            // =========================================
 
             const oscillator2 =
                 audioContext.createOscillator();
@@ -583,10 +663,12 @@ if (enquiryPopup) {
                 audioContext.currentTime + 0.13
             );
 
-            oscillator2.frequency.exponentialRampToValueAtTime(
-                1318,
-                audioContext.currentTime + 0.25
-            );
+
+            oscillator2.frequency
+                .exponentialRampToValueAtTime(
+                    1318,
+                    audioContext.currentTime + 0.25
+                );
 
 
             gain2.gain.setValueAtTime(
@@ -594,15 +676,19 @@ if (enquiryPopup) {
                 audioContext.currentTime + 0.13
             );
 
-            gain2.gain.exponentialRampToValueAtTime(
-                0.25,
-                audioContext.currentTime + 0.16
-            );
 
-            gain2.gain.exponentialRampToValueAtTime(
-                0.0001,
-                audioContext.currentTime + 0.48
-            );
+            gain2.gain
+                .exponentialRampToValueAtTime(
+                    0.25,
+                    audioContext.currentTime + 0.16
+                );
+
+
+            gain2.gain
+                .exponentialRampToValueAtTime(
+                    0.0001,
+                    audioContext.currentTime + 0.48
+                );
 
 
             oscillator2.connect(gain2);
@@ -616,26 +702,31 @@ if (enquiryPopup) {
                 audioContext.currentTime + 0.13
             );
 
+
             oscillator2.stop(
                 audioContext.currentTime + 0.48
             );
 
 
-            /* =========================================
-               CLEANUP
-            ========================================= */
+            // =========================================
+            // CLEANUP
+            // =========================================
 
-            setTimeout(function () {
+            setTimeout(
+                function () {
 
-                if (
-                    audioContext.state !== "closed"
-                ) {
+                    if (
+                        audioContext.state !==
+                        "closed"
+                    ) {
 
-                    audioContext.close();
+                        audioContext.close();
 
-                }
+                    }
 
-            }, 700);
+                },
+                700
+            );
 
 
         } catch (error) {
@@ -650,22 +741,26 @@ if (enquiryPopup) {
     }
 
 
-    /* =================================================
-       OPEN POPUP
-    ================================================= */
+    // =========================================
+    // OPEN POPUP
+    // =========================================
 
     function openEnquiryPopup() {
 
-        /* Maximum popup limit */
+        if (
+            popupCount >=
+            MAX_POPUPS
+        ) {
 
-        if (popupCount >= MAX_POPUPS) {
             return;
+
         }
 
 
-        /* Show popup */
+        enquiryPopup.classList.add(
+            "show"
+        );
 
-        enquiryPopup.classList.add("show");
 
         enquiryPopup.setAttribute(
             "aria-hidden",
@@ -673,25 +768,24 @@ if (enquiryPopup) {
         );
 
 
-        /* Play sound */
-
         playEnquirySound();
 
-
-        /* Increase count */
 
         popupCount++;
 
     }
 
 
-    /* =================================================
-       CLOSE POPUP
-    ================================================= */
+    // =========================================
+    // CLOSE POPUP
+    // =========================================
 
     function closeEnquiryPopup() {
 
-        enquiryPopup.classList.remove("show");
+        enquiryPopup.classList.remove(
+            "show"
+        );
+
 
         enquiryPopup.setAttribute(
             "aria-hidden",
@@ -699,30 +793,34 @@ if (enquiryPopup) {
         );
 
 
-        /* Schedule next popup */
+        if (
+            popupCount <
+            MAX_POPUPS
+        ) {
 
-        if (popupCount < MAX_POPUPS) {
-
-            clearTimeout(repeatTimer);
-
-
-            repeatTimer = setTimeout(
-                function () {
-
-                    openEnquiryPopup();
-
-                },
-                REPEAT_DELAY
+            clearTimeout(
+                repeatTimer
             );
+
+
+            repeatTimer =
+                setTimeout(
+                    function () {
+
+                        openEnquiryPopup();
+
+                    },
+                    REPEAT_DELAY
+                );
 
         }
 
     }
 
 
-    /* =================================================
-       CLOSE BUTTON
-    ================================================= */
+    // =========================================
+    // CLOSE BUTTON
+    // =========================================
 
     if (enquiryPopupClose) {
 
@@ -734,9 +832,9 @@ if (enquiryPopup) {
     }
 
 
-    /* =================================================
-       CLICK OUTSIDE POPUP
-    ================================================= */
+    // =========================================
+    // CLICK OUTSIDE POPUP
+    // =========================================
 
     enquiryPopup.addEventListener(
         "click",
@@ -756,15 +854,18 @@ if (enquiryPopup) {
     );
 
 
-    /* =================================================
-       ESCAPE KEY
-    ================================================= */
+    // =========================================
+    // ESCAPE KEY
+    // =========================================
 
     document.addEventListener(
         "keydown",
         function (event) {
 
-            if (event.key === "Escape") {
+            if (
+                event.key ===
+                "Escape"
+            ) {
 
                 if (
                     enquiryPopup.classList.contains(
@@ -782,9 +883,9 @@ if (enquiryPopup) {
     );
 
 
-    /* =================================================
-       FORM SUBMISSION
-    ================================================= */
+    // =========================================
+    // FORM SUBMISSION
+    // =========================================
 
     const enquiryForm =
         enquiryPopup.querySelector(
@@ -798,13 +899,13 @@ if (enquiryPopup) {
             "submit",
             function () {
 
-                /*
-                 * Stop future popup
-                 */
+                clearTimeout(
+                    repeatTimer
+                );
 
-                clearTimeout(repeatTimer);
 
-                popupCount = MAX_POPUPS;
+                popupCount =
+                    MAX_POPUPS;
 
             }
         );
@@ -812,9 +913,9 @@ if (enquiryPopup) {
     }
 
 
-    /* =================================================
-       FIRST POPUP
-    ================================================= */
+    // =========================================
+    // FIRST POPUP
+    // =========================================
 
     window.addEventListener(
         "load",
