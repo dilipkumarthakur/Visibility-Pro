@@ -17,15 +17,21 @@
 
 </head>
 
+
 <body>
 
-    <!-- HEADER -->
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
 
     <header class="site-header">
 
         <div class="header-inner">
 
-            <a href="../index.html" class="brand">
+            <a
+                href="../index.html"
+                class="brand">
 
                 <img
                     src="../images/visibilitypro-logo.png"
@@ -37,11 +43,25 @@
 
             <nav class="main-nav">
 
-                <a href="../index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="../index.html#clients">Clients</a>
-                <a href="../index.html#case-studies">Case Studies</a>
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="about.html">
+                    About
+                </a>
+
+                <a href="services.html">
+                    Services
+                </a>
+
+                <a href="../index.html#clients">
+                    Clients
+                </a>
+
+                <a href="../index.html#case-studies">
+                    Case Studies
+                </a>
 
                 <a
                     href="contact.html"
@@ -69,23 +89,48 @@
         </div>
 
 
+        <!-- MOBILE NAV -->
+
         <div class="mobile-nav">
 
-            <a href="../index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="../index.html#clients">Clients</a>
-            <a href="../index.html#case-studies">Case Studies</a>
-            <a href="contact.html">Get in Touch</a>
+            <a href="../index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="services.html">
+                Services
+            </a>
+
+            <a href="../index.html#clients">
+                Clients
+            </a>
+
+            <a href="../index.html#case-studies">
+                Case Studies
+            </a>
+
+            <a href="contact.html">
+                Get in Touch
+            </a>
 
         </div>
 
     </header>
 
 
-    <!-- REVIEWS PAGE -->
+
+    <!-- =========================================
+         ALL REVIEWS PAGE
+    ========================================== -->
 
     <main class="all-reviews-page">
+
+
+        <!-- HERO -->
 
         <section class="all-reviews-hero">
 
@@ -93,18 +138,27 @@
                 CLIENT FEEDBACK
             </div>
 
+
             <h1>
+
                 What our clients
                 <span>say.</span>
+
             </h1>
 
+
             <p>
+
                 Real experiences from the people and
                 organizations we work with.
+
             </p>
 
         </section>
 
+
+
+        <!-- REVIEWS -->
 
         <section class="all-reviews-section">
 
@@ -120,16 +174,21 @@
 
         </section>
 
+
     </main>
 
 
-    <!-- FOOTER -->
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
 
     <footer class="site-footer">
 
         <div class="footer-inner">
 
             <div class="footer-brand">
+
 
                 <a
                     href="../index.html"
@@ -141,19 +200,27 @@
 
                 </a>
 
+
                 <div class="footer-tagline">
                     PR • DIGITAL • INFLUENCE
                 </div>
 
+
                 <h2>
+
                     Visibility with
                     <span>purpose.</span>
+
                 </h2>
 
+
                 <p>
+
                     Strategic communication, digital influence
                     and reputation built for the moments that matter.
+
                 </p>
+
 
             </div>
 
@@ -162,34 +229,76 @@
     </footer>
 
 
+
+    <!-- =========================================
+         MAIN WEBSITE SCRIPT
+    ========================================== -->
+
     <script src="../script.js"></script>
 
 
+
+    <!-- =========================================
+         ALL REVIEWS SCRIPT
+    ========================================== -->
+
     <script>
 
-        const REVIEWS_API =
+        /*
+        =========================================
+        ALL REVIEWS API
+        =========================================
+        */
+
+        const ALL_REVIEWS_API =
             "https://script.google.com/macros/s/AKfycbwKfsRrNtHT4YzEai8F0u9esxhG4qRzUSkKLXikb7N04uTS2_inHjxTSi41rb7KGHJ2/exec";
 
 
-        function escapeHTML(value) {
+
+        /*
+        =========================================
+        ESCAPE HTML
+        =========================================
+        */
+
+        function escapeReviewHTML(value) {
 
             return String(value)
+
                 .replace(/&/g, "&amp;")
+
                 .replace(/</g, "&lt;")
+
                 .replace(/>/g, "&gt;")
+
                 .replace(/"/g, "&quot;")
+
                 .replace(/'/g, "&#039;");
 
         }
 
 
+
+        /*
+        =========================================
+        CREATE REVIEW CARD
+        =========================================
+        */
+
         function createAllReviewCard(review) {
 
+
             const name =
-                escapeHTML(review.name || "Client");
+                escapeReviewHTML(
+                    review.name || "Client"
+                );
+
 
             const feedback =
-                escapeHTML(review.feedback || "");
+                escapeReviewHTML(
+                    review.feedback || ""
+                );
+
 
             const rating =
                 Math.max(
@@ -202,20 +311,29 @@
 
 
             const firstLetter =
-                name.charAt(0).toUpperCase();
+                name
+                    .charAt(0)
+                    .toUpperCase();
+
 
 
             return `
 
                 <article class="all-review-card">
 
+
                     <div class="all-review-top">
+
 
                         <div class="all-review-person">
 
+
                             <div class="all-review-avatar">
+
                                 ${firstLetter}
+
                             </div>
+
 
                             <div>
 
@@ -229,14 +347,19 @@
 
                             </div>
 
+
                         </div>
 
 
                         <div class="all-review-google">
+
                             G
+
                         </div>
 
+
                     </div>
+
 
 
                     <div class="all-review-stars">
@@ -247,9 +370,13 @@
                     </div>
 
 
+
                     <p>
+
                         ${feedback}
+
                     </p>
+
 
                 </article>
 
@@ -258,55 +385,148 @@
         }
 
 
+
+        /*
+        =========================================
+        LOAD ALL APPROVED REVIEWS
+        =========================================
+        */
+
         async function loadAllReviews() {
 
+
             const grid =
-                document.getElementById("allReviewsGrid");
+                document.getElementById(
+                    "allReviewsGrid"
+                );
 
 
-            if (!grid) return;
+            if (!grid) {
+
+                return;
+
+            }
+
 
 
             try {
 
+
                 const response =
-                    await fetch(REVIEWS_API);
+                    await fetch(
+                        ALL_REVIEWS_API,
+                        {
+                            method: "GET",
+                            cache: "no-store"
+                        }
+                    );
+
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Reviews API request failed."
+                    );
+
+                }
+
 
 
                 const data =
                     await response.json();
 
 
+
+                /*
+                -----------------------------------------
+                VALIDATE API RESPONSE
+                -----------------------------------------
+                */
+
                 if (
+                    !data ||
                     !data.success ||
                     !Array.isArray(data.reviews)
                 ) {
 
-                    grid.innerHTML =
-                        "<p>No reviews available.</p>";
+                    grid.innerHTML = `
+                        <p class="reviews-error">
+                            No reviews available.
+                        </p>
+                    `;
 
                     return;
 
                 }
 
 
-                if (data.reviews.length === 0) {
 
-                    grid.innerHTML =
-                        "<p>No reviews available yet.</p>";
+                /*
+                -----------------------------------------
+                NO REVIEWS
+                -----------------------------------------
+                */
+
+                if (
+                    data.reviews.length === 0
+                ) {
+
+                    grid.innerHTML = `
+                        <p class="reviews-error">
+                            No approved reviews available yet.
+                        </p>
+                    `;
 
                     return;
 
                 }
 
+
+
+                /*
+                -----------------------------------------
+                SORT NEWEST → OLDEST
+                -----------------------------------------
+                */
+
+                const allReviews =
+                    [...data.reviews].sort(
+                        function (a, b) {
+
+                            const dateA =
+                                Number(
+                                    a.timestamp || 0
+                                );
+
+                            const dateB =
+                                Number(
+                                    b.timestamp || 0
+                                );
+
+                            return dateB - dateA;
+
+                        }
+                    );
+
+
+
+                /*
+                -----------------------------------------
+                DISPLAY EVERY REVIEW
+                -----------------------------------------
+                */
 
                 grid.innerHTML =
-                    data.reviews
-                        .map(createAllReviewCard)
+                    allReviews
+                        .map(
+                            createAllReviewCard
+                        )
                         .join("");
 
 
             } catch (error) {
+
 
                 console.error(
                     "Reviews could not be loaded:",
@@ -314,17 +534,40 @@
                 );
 
 
-                grid.innerHTML =
-                    "<p>Unable to load reviews.</p>";
+                grid.innerHTML = `
+
+                    <p class="reviews-error">
+
+                        Unable to load reviews.
+                        Please try again later.
+
+                    </p>
+
+                `;
 
             }
 
         }
 
 
-        loadAllReviews();
+
+        /*
+        =========================================
+        START
+        =========================================
+        */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                loadAllReviews();
+
+            }
+        );
 
     </script>
+
 
 </body>
 
