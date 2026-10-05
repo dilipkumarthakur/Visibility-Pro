@@ -1581,3 +1581,232 @@ if (
 
 
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// =========================================
+// DYNAMIC NEWS / INSIGHTS
+// =========================================
+
+const NEWS_API =
+    "https://script.google.com/macros/s/AKfycbx2uOnY56-E7eB5eOhxIzSAX8cJuRQ78YR3Rbglc77HoUgBTenc42tA7UEQlpQ9b3Q/exec";
+
+
+
+function escapeNewsHTML(value) {
+
+    const div = document.createElement("div");
+
+    div.textContent = value || "";
+
+    return div.innerHTML;
+}
+
+
+function createNewsCard(news) {
+
+    const title =
+        escapeNewsHTML(
+            news.title || "Latest News"
+        );
+
+    const category =
+        escapeNewsHTML(
+            news.category || "NEWS"
+        );
+
+    const image =
+        news.image ||
+        "images/news-01.jpg";
+
+    const link =
+        news.link || "#";
+
+    const date =
+        news.date || "";
+
+
+    return `
+        <article class="news-card">
+
+            <a
+                href="${link}"
+                class="news-image"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <img
+                    src="${image}"
+                    alt="${title}"
+                    loading="lazy"
+                    onerror="this.src='images/news-01.jpg'"
+                >
+
+            </a>
+
+
+            <div class="news-content">
+
+                <div class="news-category">
+                    ${category}
+                </div>
+
+
+                <h3>
+                    ${title}
+                </h3>
+
+
+                ${
+                    date
+                    ? `<div class="news-date">${escapeNewsHTML(date)}</div>`
+                    : ""
+                }
+
+
+                <a
+                    href="${link}"
+                    class="news-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+
+                    <span>VIEW</span>
+
+                    <b>→</b>
+
+                </a>
+
+            </div>
+
+        </article>
+    `;
+}
+
+
+async function loadDynamicNews() {
+
+    const newsGrid =
+        document.getElementById(
+            "dynamicNewsGrid"
+        );
+
+
+    if (!newsGrid) {
+        return;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                NEWS_API +
+                "?t=" +
+                Date.now(),
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                "News API failed: " +
+                response.status
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "Visibility Pro News:",
+            data
+        );
+
+
+        if (
+            !data ||
+            data.success !== true ||
+            !Array.isArray(data.news) ||
+            data.news.length === 0
+        ) {
+
+            newsGrid.innerHTML = `
+                <div class="news-loading">
+                    No latest news available.
+                </div>
+            `;
+
+            return;
+        }
+
+
+        const latestNews =
+            data.news.slice(0, 4);
+
+
+        newsGrid.innerHTML =
+            latestNews
+                .map(createNewsCard)
+                .join("");
+
+
+    } catch (error) {
+
+        console.error(
+            "Visibility Pro News Error:",
+            error
+        );
+
+
+        newsGrid.innerHTML = `
+            <div class="news-loading">
+                Latest news could not be loaded.
+            </div>
+        `;
+
+    }
+
+}
+
+
+// =========================================
+// LOAD NEWS AFTER PAGE LOAD
+// =========================================
+
+window.addEventListener(
+    "load",
+    function () {
+
+        setTimeout(
+            function () {
+
+                loadDynamicNews();
+
+            },
+            500
+        );
+
+    }
+);

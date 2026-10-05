@@ -17897,3 +17897,37 @@ body {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   DYNAMIC NEWS
+========================================= */
+
+.news-loading {
+    width: 100%;
+    padding: 60px 20px;
+    text-align: center;
+    color: #858585;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+
+.news-date {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #858585;
+}
