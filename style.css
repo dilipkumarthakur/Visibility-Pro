@@ -17931,3 +17931,1002 @@ body {
     text-transform: uppercase;
     color: #858585;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VISIBILITY PRO — CAREERS PAGE
+========================================================= */
+
+.careers-page {
+    background: #080808;
+    color: #f2f2f2;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.careers-container {
+    width: min(1180px, calc(100% - 80px));
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.careers-hero {
+    padding: 120px 0 100px;
+    background: #080808;
+    border-bottom: 1px solid #292929;
+}
+
+.careers-label,
+.careers-section-label {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+
+    color: #c9973e;
+}
+
+.careers-label i,
+.careers-section-label i {
+    display: block;
+    width: 70px;
+    height: 1px;
+    background: #c9973e;
+}
+
+.careers-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+
+    margin-top: 55px;
+}
+
+.careers-hero-content h1 {
+    margin: 0;
+
+    font-size: clamp(58px, 7vw, 105px);
+    line-height: .9;
+    font-weight: 500;
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+}
+
+.careers-hero-content h1 span {
+    color: #c9973e;
+}
+
+.careers-hero-content p {
+    max-width: 470px;
+    margin: 32px 0 35px;
+
+    color: #a5a5a5;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.careers-hero-button,
+.careers-apply-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 25px;
+
+    padding: 15px 22px;
+
+    border: 1px solid #c9973e;
+
+    color: #f2f2f2;
+    text-decoration: none;
+
+    font-size: 11px;
+    letter-spacing: .12em;
+
+    transition: .3s ease;
+}
+
+.careers-hero-button b,
+.careers-apply-button b {
+    color: #c9973e;
+    font-size: 18px;
+}
+
+.careers-hero-button:hover,
+.careers-apply-button:hover {
+    background: #c9973e;
+    color: #080808;
+}
+
+.careers-hero-button:hover b,
+.careers-apply-button:hover b {
+    color: #080808;
+}
+
+.careers-hero-visual {
+    height: 510px;
+    overflow: hidden;
+}
+
+.careers-hero-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    filter: grayscale(25%);
+}
+
+
+/* =========================================================
+   COMMON SECTION
+========================================================= */
+
+.careers-section {
+    padding: 110px 0;
+    border-bottom: 1px solid #292929;
+}
+
+.careers-section-heading {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 70px;
+
+    margin-top: 50px;
+    margin-bottom: 65px;
+}
+
+.careers-section-heading h2,
+.careers-form-intro h2 {
+    margin: 0;
+
+    font-size: clamp(42px, 5vw, 72px);
+    line-height: .95;
+    font-weight: 500;
+    letter-spacing: -.04em;
+}
+
+.careers-section-heading h2 span,
+.careers-form-intro h2 span {
+    color: #c9973e;
+}
+
+.careers-section-heading p {
+    align-self: end;
+
+    margin: 0;
+
+    color: #929292;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   BENEFITS
+========================================================= */
+
+.career-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+
+    background: #292929;
+}
+
+.career-benefit {
+    min-height: 230px;
+    padding: 30px;
+
+    background: #080808;
+}
+
+.career-number {
+    display: block;
+
+    margin-bottom: 45px;
+
+    color: #c9973e;
+
+    font-size: 11px;
+    letter-spacing: .15em;
+}
+
+.career-benefit h3 {
+    margin: 0 0 13px;
+
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: .08em;
+}
+
+.career-benefit p {
+    margin: 0;
+
+    color: #858585;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   OPEN POSITIONS
+========================================================= */
+
+.career-jobs {
+    border-top: 1px solid #292929;
+}
+
+.career-job {
+    display: grid;
+    grid-template-columns: 80px 1fr 40px;
+    align-items: center;
+
+    min-height: 105px;
+
+    padding: 0 20px;
+
+    border-bottom: 1px solid #292929;
+
+    color: #f2f2f2;
+    text-decoration: none;
+
+    transition: .3s ease;
+}
+
+.career-job:hover {
+    padding-left: 30px;
+    background: #101010;
+}
+
+.career-job-number {
+    color: #c9973e;
+
+    font-size: 11px;
+    letter-spacing: .1em;
+}
+
+.career-job-info h3 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.career-job-meta {
+    color: #777;
+
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.career-job-meta span {
+    margin: 0 8px;
+    color: #c9973e;
+}
+
+.career-job-arrow {
+    color: #c9973e;
+    font-size: 22px;
+
+    text-align: right;
+}
+
+
+/* =========================================================
+   GENERAL APPLICATION CTA
+========================================================= */
+
+.careers-general {
+    padding: 80px 0;
+    background: #101010;
+}
+
+.careers-general-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+.careers-general-label {
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: #c9973e;
+
+    font-size: 11px;
+    letter-spacing: .15em;
+}
+
+.careers-general-box h2 {
+    margin: 0;
+
+    font-size: clamp(35px, 4vw, 58px);
+    line-height: 1;
+    font-weight: 500;
+}
+
+.careers-general-box h2 span {
+    color: #c9973e;
+}
+
+.careers-general-box p {
+    margin: 18px 0 0;
+
+    color: #858585;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   APPLICATION FORM
+========================================================= */
+
+.careers-application {
+    background: #080808;
+}
+
+.careers-form-intro {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    gap: 50px;
+
+    margin: 50px 0 60px;
+}
+
+.careers-form-intro p {
+    max-width: 320px;
+
+    margin: 0;
+
+    color: #858585;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.career-form {
+    padding: 45px;
+
+    border: 1px solid #292929;
+    background: #0d0d0d;
+}
+
+.careers-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.career-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.career-field-full {
+    grid-column: 1 / -1;
+}
+
+.career-field label {
+    margin-bottom: 10px;
+
+    color: #bdbdbd;
+
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.career-field input,
+.career-field select,
+.career-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 15px 0;
+
+    border: 0;
+    border-bottom: 1px solid #363636;
+
+    outline: none;
+
+    background: transparent;
+
+    color: #f2f2f2;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.career-field input::placeholder,
+.career-field textarea::placeholder {
+    color: #555;
+}
+
+.career-field input:focus,
+.career-field select:focus,
+.career-field textarea:focus {
+    border-bottom-color: #c9973e;
+}
+
+.career-field select {
+    cursor: pointer;
+}
+
+.career-field select option {
+    background: #101010;
+    color: #f2f2f2;
+}
+
+.career-field textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.career-field input[type="file"] {
+    padding: 14px 0;
+    cursor: pointer;
+}
+
+.career-field input[type="file"]::file-selector-button {
+    margin-right: 15px;
+    padding: 9px 15px;
+
+    border: 1px solid #c9973e;
+
+    background: transparent;
+    color: #c9973e;
+
+    cursor: pointer;
+}
+
+.career-field small {
+    margin-top: 8px;
+    color: #666;
+    font-size: 10px;
+}
+
+.career-submit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-top: 45px;
+    padding: 18px 22px;
+
+    border: 1px solid #c9973e;
+
+    background: transparent;
+    color: #f2f2f2;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: .13em;
+
+    transition: .3s ease;
+}
+
+.career-submit b {
+    color: #c9973e;
+    font-size: 18px;
+}
+
+.career-submit:hover {
+    background: #c9973e;
+    color: #080808;
+}
+
+.career-submit:hover b {
+    color: #080808;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .careers-container {
+        width: min(100% - 40px, 700px);
+    }
+
+    .careers-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .careers-hero-visual {
+        height: 380px;
+    }
+
+    .careers-section-heading {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .career-benefits {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .careers-form-intro {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .careers-container {
+        width: calc(100% - 30px);
+    }
+
+    .careers-hero {
+        padding: 90px 0 70px;
+    }
+
+    .careers-hero-grid {
+        margin-top: 40px;
+    }
+
+    .careers-hero-content h1 {
+        font-size: 55px;
+    }
+
+    .careers-hero-content p {
+        font-size: 13px;
+    }
+
+    .careers-hero-visual {
+        height: 280px;
+    }
+
+    .careers-section {
+        padding: 75px 0;
+    }
+
+    .careers-section-heading {
+        margin-top: 35px;
+        margin-bottom: 45px;
+    }
+
+    .careers-section-heading h2,
+    .careers-form-intro h2 {
+        font-size: 42px;
+    }
+
+    .career-benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .career-benefit {
+        min-height: auto;
+    }
+
+    .career-number {
+        margin-bottom: 25px;
+    }
+
+    .career-job {
+        grid-template-columns: 45px 1fr 25px;
+        min-height: 95px;
+        padding: 0 5px;
+    }
+
+    .career-job-info h3 {
+        font-size: 16px;
+    }
+
+    .career-job-meta {
+        font-size: 9px;
+    }
+
+    .careers-general {
+        padding: 60px 0;
+    }
+
+    .careers-general-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .career-form {
+        padding: 25px 20px;
+    }
+
+    .careers-form-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .career-field-full {
+        grid-column: auto;
+    }
+
+    .career-submit {
+        margin-top: 35px;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VISIBILITY PRO — CAREERS FINAL VISUAL OVERRIDE
+   Compact editorial layout
+========================================================= */
+
+.careers-page {
+    background: #080808;
+}
+
+/* ---------- GLOBAL ---------- */
+
+.careers-container {
+    width: min(1120px, calc(100% - 64px));
+}
+
+
+/* ---------- HERO ---------- */
+
+.careers-hero {
+    padding: 82px 0 70px;
+}
+
+.careers-label,
+.careers-section-label {
+    font-size: 9px;
+    letter-spacing: .16em;
+}
+
+.careers-label i,
+.careers-section-label i {
+    width: 48px;
+}
+
+.careers-hero-grid {
+    grid-template-columns: 1.05fr .95fr;
+    gap: 55px;
+    margin-top: 38px;
+}
+
+.careers-hero-content h1 {
+    font-size: clamp(44px, 5vw, 70px);
+    line-height: .94;
+    letter-spacing: -.035em;
+}
+
+.careers-hero-content p {
+    max-width: 400px;
+    margin: 22px 0 25px;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.careers-hero-button {
+    padding: 12px 17px;
+    gap: 18px;
+    font-size: 9px;
+}
+
+.careers-hero-button b {
+    font-size: 15px;
+}
+
+.careers-hero-visual {
+    height: 390px;
+}
+
+
+/* ---------- SECTIONS ---------- */
+
+.careers-section {
+    padding: 75px 0;
+}
+
+.careers-section-heading {
+    grid-template-columns: 1fr 330px;
+    gap: 55px;
+    margin-top: 35px;
+    margin-bottom: 42px;
+}
+
+.careers-section-heading h2,
+.careers-form-intro h2 {
+    font-size: clamp(34px, 4vw, 52px);
+    line-height: .96;
+}
+
+.careers-section-heading p {
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* ---------- WHY JOIN ---------- */
+
+.career-benefits {
+    gap: 1px;
+}
+
+.career-benefit {
+    min-height: 185px;
+    padding: 24px;
+}
+
+.career-number {
+    margin-bottom: 30px;
+    font-size: 9px;
+}
+
+.career-benefit h3 {
+    margin-bottom: 9px;
+    font-size: 12px;
+    letter-spacing: .07em;
+}
+
+.career-benefit p {
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+
+/* ---------- OPEN POSITIONS ---------- */
+
+.career-job {
+    grid-template-columns: 65px 1fr 35px;
+    min-height: 82px;
+    padding: 0 15px;
+}
+
+.career-job:hover {
+    padding-left: 22px;
+}
+
+.career-job-number {
+    font-size: 9px;
+}
+
+.career-job-info h3 {
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.career-job-meta {
+    font-size: 9px;
+}
+
+.career-job-arrow {
+    font-size: 17px;
+}
+
+
+/* ---------- SEND PROFILE ---------- */
+
+.careers-general {
+    padding: 58px 0;
+}
+
+.careers-general-box {
+    gap: 35px;
+}
+
+.careers-general-label {
+    margin-bottom: 12px;
+    font-size: 9px;
+}
+
+.careers-general-box h2 {
+    font-size: 38px;
+}
+
+.careers-general-box p {
+    margin-top: 12px;
+    font-size: 12px;
+}
+
+.careers-apply-button {
+    padding: 12px 17px;
+    gap: 18px;
+    font-size: 9px;
+}
+
+
+/* ---------- APPLICATION ---------- */
+
+.careers-form-intro {
+    margin: 35px 0 42px;
+}
+
+.careers-form-intro p {
+    font-size: 12px;
+}
+
+.career-form {
+    padding: 32px;
+}
+
+.careers-form-grid {
+    gap: 23px 28px;
+}
+
+.career-field label {
+    margin-bottom: 7px;
+    font-size: 9px;
+}
+
+.career-field input,
+.career-field select,
+.career-field textarea {
+    padding: 11px 0;
+    font-size: 12px;
+}
+
+.career-field textarea {
+    min-height: 95px;
+}
+
+.career-field small {
+    font-size: 9px;
+}
+
+.career-submit {
+    margin-top: 32px;
+    padding: 14px 18px;
+    font-size: 9px;
+}
+
+.career-submit b {
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .careers-container {
+        width: min(100% - 40px, 680px);
+    }
+
+    .careers-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .careers-hero-visual {
+        height: 320px;
+    }
+
+    .careers-section-heading {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .careers-container {
+        width: calc(100% - 30px);
+    }
+
+    .careers-hero {
+        padding: 65px 0 55px;
+    }
+
+    .careers-hero-content h1 {
+        font-size: 43px;
+    }
+
+    .careers-hero-content p {
+        font-size: 11px;
+        line-height: 1.65;
+    }
+
+    .careers-hero-visual {
+        height: 250px;
+    }
+
+    .careers-section {
+        padding: 58px 0;
+    }
+
+    .careers-section-heading {
+        margin-top: 28px;
+        margin-bottom: 32px;
+    }
+
+    .careers-section-heading h2,
+    .careers-form-intro h2 {
+        font-size: 34px;
+    }
+
+    .career-benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .career-benefit {
+        min-height: 145px;
+        padding: 22px;
+    }
+
+    .career-number {
+        margin-bottom: 20px;
+    }
+
+    .career-job {
+        grid-template-columns: 38px 1fr 22px;
+        min-height: 78px;
+        padding: 0 4px;
+    }
+
+    .career-job-info h3 {
+        font-size: 13px;
+    }
+
+    .career-job-meta {
+        font-size: 8px;
+    }
+
+    .careers-general-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .careers-general-box h2 {
+        font-size: 32px;
+    }
+
+    .career-form {
+        padding: 22px 18px;
+    }
+
+    .careers-form-grid {
+        grid-template-columns: 1fr;
+        gap: 21px;
+    }
+
+}
